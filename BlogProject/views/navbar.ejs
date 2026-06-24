@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+  <div class="container">
+    <!-- Brand Logo -->
+    <a class="navbar-brand fw-bold" href="/articles">
+      ✍️ Blog<span>Verse</span>
+    </a>
+
+    <!-- Mobile hamburger toggle button -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Nav Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/articles"> All Articles</a>
+        </li>
+        <% if (currentUser) { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/my-articles"> My Articles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/articles/create">✏️ Write</a>
+          </li>
+        <% } %>
+      </ul>
+
+      <!-- Right side: user info or login/register -->
+      <ul class="navbar-nav">
+        <% if (currentUser) { %>
+          <li class="nav-item d-flex align-items-center">
+            <span class="nav-link text-info">
+              👤 <%= currentUser.username %>
+              <% if (currentUser.role === 'admin') { %>
+                <span class="badge-admin ms-1">Admin</span>
+              <% } %>
+            </span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-danger" href="/logout">🚪 Sign Out</a>
+          </li>
+        <% } else { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">🔑 Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/register">📝 Register</a>
+          </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>

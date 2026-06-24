@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register - BlogVerse</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/css/style.css" rel="stylesheet" />
+</head>
+<body>
+
+  <%- include('navbar') %>
+
+  <div class="auth-wrapper">
+    <div class="auth-card">
+
+      <!-- Logo / Heading -->
+      <div class="text-center mb-4">
+        <div style="font-size: 3rem;">📝</div>
+        <h2>Create Account</h2>
+        <p class="text-muted">Join BlogVerse and start writing!</p>
+      </div>
+
+      <!-- Error Message (shown if registration fails) -->
+      <% if (error) { %>
+        <div class="alert alert-danger">⚠️ <%= error %></div>
+      <% } %>
+
+      <!-- Register Form -->
+      <form action="/register" method="POST">
+
+        <!-- Username -->
+        <div class="mb-3">
+          <label class="form-label">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            placeholder="Choose a username"
+            required
+          />
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            placeholder="Choose a password"
+            required
+          />
+        </div>
+
+        <!-- Role Selection -->
+        <div class="mb-4">
+          <label class="form-label">Account Type</label>
+          <select class="form-select" name="role">
+            <option value="user">👤 User (Regular)</option>
+            <option value="admin">🔧 Admin</option>
+          </select>
+          <small class="text-muted">Admins can manage all articles and comments.</small>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary w-100 py-2">
+          🚀 Create Account
+        </button>
+
+      </form>
+
+      <!-- Login Link -->
+      <p class="text-center mt-4 text-muted">
+        Already have an account?
+        <a href="/login" class="fw-bold text-decoration-none" style="color: var(--primary);">Login here</a>
+      </p>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
